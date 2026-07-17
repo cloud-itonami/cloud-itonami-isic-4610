@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wholesale on a fee or contract basis | cloud-itonami-isic-4610</title>
+  <meta name="description" content="Wholesale on a fee or contract basis — governed open occupation blueprint (ISIC 4610).">
+  <style>
+    :root { --bg:#f5f7fa; --card:#fff; --fg:#1b1f24; --muted:#57606a; --accent:#1e3a8a; --line:#d0d7de; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#0d1117; --card:#161b22; --fg:#e6edf3; --muted:#8d96a0; --accent:#58a6ff; --line:#30363d; }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, var(--bg), #c3cfe2);
+           min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; color: var(--fg); }
+    .container { max-width: 800px; width: 100%; background: var(--card); border-radius: 12px;
+                 box-shadow: 0 10px 40px rgba(0,0,0,.1); padding: 48px 40px; border: 1px solid var(--line); }
+    h1 { font-size: 1.85rem; color: var(--accent); margin-bottom: 8px; }
+    .badge { display: inline-block; background: #e0e7ff; color: var(--accent); padding: 3px 10px;
+             border-radius: 4px; font-size: .85rem; font-weight: 600; margin-bottom: 20px; }
+    @media (prefers-color-scheme: dark) { .badge { background: #1f2a44; } }
+    .pitch { border-left: 4px solid var(--accent); padding-left: 16px; margin: 20px 0 28px; color: var(--muted); line-height: 1.7; }
+    .pitch p { margin-bottom: 10px; }
+    .meta { font-size: .9rem; color: var(--muted); margin-bottom: 24px; }
+    .meta code { background: var(--bg); padding: 1px 6px; border-radius: 4px; }
+    .cta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+    @media (max-width: 560px) { .cta { grid-template-columns: 1fr; } }
+    .cta a { display: block; text-align: center; text-decoration: none; padding: 14px 18px;
+             border-radius: 8px; font-weight: 600; }
+    .cta .primary { background: var(--accent); color: #fff; }
+    .cta .secondary { border: 1.5px solid var(--accent); color: var(--accent); }
+    ul.links { list-style: none; font-size: .95rem; }
+    ul.links li { margin: 8px 0; }
+    a { color: var(--accent); }
+    footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--line);
+             font-size: .85rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>Wholesale on a fee or contract basis</h1>
+    <div class="badge">ISIC 4610 · maturity implemented</div>
+    <div class="pitch">
+      <p>Open Business Blueprint for ISIC Rev.5 4610: Wholesale on a Fee or Contract Basis -- mandate intake, per-jurisdiction principal-diligence / dual-agency / sanctions regulatory verification, deal confirmation between two principals, and commission-invoice settlement for a commission broker / trade intermediary.</p>
+      <p>This repository publishes a commission-brokerage actor -- mandate intake, per-jurisdiction commercial-agency / sanctions regulatory verification, deal confirmation and commission-invoice settlement -- as an OSS business that any qualified operator can fork, deploy, run, improve and sell, so a regional commission broker never surrenders principal, mandate, credit and sanctions data to a closed brokerage / CRM SaaS.</p>
+      <p>What is a &quot;commission broker&quot; (ISIC 4610)? ISIC 4610 is the classification for commission agents / trade brokers / wholesale intermediaries who arrange the sale or purchase of goods on behalf of others for a fee or commission, WITHOUT ever taking ownership/title of the goods themselves. This is the single structural fact that distinguishes this vertical from its two siblings already registered in this fleet: cloud-itonami-isic-4671 (FuelTradeAdvisor, wholesale of solid/liquid/gaseous fuels) and cloud-itonami-isic-4690 (ShoshaAdvisor, non-specialized wholesale trade) -- BOTH of those take PRINCIPAL positions (they buy, then resell; invoice settlement is their own money moving). A commission broker is engaged by one or both principals (buyer-side, seller-side, or both -- a &quot;dual mandate&quot;) to arrange a deal for a fee; the actual sale settles directly between the two principals, and the broker's own actuation is arranging / confirming the deal and invoicing its OWN commission, never settling the underlying trade.</p>
+    </div>
+    <p class="meta">Domain <code>commerce/commission-brokerage</code> · Governor <code>commission-broker-governor</code> · License <code>AGPL-3.0-or-later</code></p>
+    <div class="cta">
+      <a class="primary" href="https://itonami.cloud/isco-1212/">Fork + self-host claim</a>
+      <a class="secondary" href="https://itonami.cloud/docs/go-live.md">Paid go-live path</a>
+    </div>
+    <ul class="links">
+      <li><a href="https://github.com/cloud-itonami/cloud-itonami-isic-4610">GitHub repository</a></li>
+      <li><a href="./operator-quickstart.md">Operator quickstart</a></li>
+      <li><a href="https://github.com/cloud-itonami/cloud-itonami-isic-4610/blob/main/blueprint.edn">blueprint.edn</a></li>
+      <li><a href="https://github.com/cloud-itonami/cloud-itonami-isic-4610/blob/main/README.md">README</a></li>
+    </ul>
+    <footer>
+      <p>Open occupation blueprint — no invented usage or revenue metrics. Product face generated for impl-product maturity (Lane C).</p>
+    </footer>
+  </main>
+</body>
+</html>
