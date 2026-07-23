@@ -34,3 +34,15 @@
   (doseq [iso3 ["JPN" "USA" "GBR" "DEU"]]
     (is (some #(re-find #"(?i)dual-agency" %) (facts/evidence-checklist iso3))
         (str iso3 " checklist must list a dual-agency disclosure item"))))
+
+(deftest zaf-has-a-spec-basis
+  ;; South Africa: Agricultural Produce Agents Act 12 of 1992 (as
+  ;; amended by Act 47 of 2003), APAC fidelity-fund-certificate
+  ;; licensing -- same honest-scoping discipline as the USA/PACA entry
+  (is (some? (facts/spec-basis "ZAF")))
+  (is (string? (:provenance (facts/spec-basis "ZAF")))))
+
+(deftest zaf-has-required-evidence-including-dual-agency
+  (is (seq (facts/evidence-checklist "ZAF")))
+  (is (some #(re-find #"(?i)dual-agency" %) (facts/evidence-checklist "ZAF"))
+      "ZAF checklist must list a dual-agency disclosure item"))

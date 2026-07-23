@@ -63,6 +63,31 @@
     not a general federal licence for every US commission-agent
     wholesale trade -- see `coverage`'s note and
     `docs/business-model.md`'s Jurisdiction coverage section.
+  - South Africa: the Agricultural Produce Agents Act 12 of 1992 (as
+    amended by the Agricultural Produce Agents Amendment Act 47 of
+    2003), administered by the Agricultural Produce Agents Council
+    (APAC) under the Minister of Agriculture -- s1(1)(i) defines
+    'agent' as 'a person who, for the acquisition of gain on his own
+    account or in a partnership, in any manner holds himself out as a
+    person who, or directly or indirectly advertises that he, on the
+    instructions of or on behalf of any other person, purchases or
+    sells agricultural produce or negotiates in connection therewith
+    or canvasses or undertakes or offers to canvass a purchaser or
+    seller therefor' -- the same commission-agent shape as ISIC 4610
+    (fee-for-service intermediation, no title to the goods). s16(1)(a)
+    then LICENSES this activity: 'no person shall act as an agent
+    unless he is the holder of a valid fidelity fund certificate'
+    issued by the council. Scoped honestly, the same discipline as
+    the USA/PACA entry above: Schedule 1 limits 'agricultural
+    produce' to fresh-produce-agent goods (flowers, ornamental/pot
+    plants, vegetables, fruit, culinary herbs) and livestock-agent
+    goods (livestock, meat, by-products, cured hides/skins) -- a
+    real, verifiable, currently-administered licensing regime (APAC
+    published new Rules in respect of Export Agents in 2025, Board
+    Notice 915 of 2026) for exactly this business model, but for
+    agricultural produce specifically, not a general commercial-
+    agency statute covering every South African commission-based
+    wholesale trade -- see `coverage`'s note.
 
   The required-evidence set (mandate/engagement-letter record, BOTH
   principals' KYC records, sanctions-screening record covering BOTH
@@ -119,6 +144,15 @@
                                "buyer-principal KYC record"
                                "seller-principal KYC record"
                                "sanctions-screening (OFAC/equivalent) record covering both principals"
+                               "dual-agency disclosure/consent record"]}
+   "ZAF" {:name "ZAF"
+          :owner-authority "Agricultural Produce Agents Council (APAC), a juristic person established by the Act, under the Minister of Agriculture"
+          :legal-basis "Agricultural Produce Agents Act 12 of 1992, as amended by the Agricultural Produce Agents Amendment Act 47 of 2003 (federal-equivalent national commission-agent licensing -- scoped to agricultural produce, see coverage note): s1(1)(i) defines 'agent' as a person who, for gain, on the instructions of or on behalf of any other person, purchases or sells agricultural produce or negotiates/canvasses in connection therewith; s16(1)(a) prohibits any person from acting as an agent unless the holder of a valid fidelity fund certificate issued by the council"
+          :provenance "https://www.gov.za/documents/agricultural-produce-agents-act"
+          :required-evidence ["mandate/engagement-letter (commission-terms) record"
+                               "buyer-principal KYC record"
+                               "seller-principal KYC record"
+                               "sanctions-screening (OFAC/equivalent) record covering both principals"
                                "dual-agency disclosure/consent record"]}})
 
 (defn spec-basis
@@ -152,7 +186,14 @@
                  "for one commodity category, not a claim that all US "
                  "commission-agent wholesale trade is federally "
                  "licensed this way (a genuine, honestly-flagged "
-                 "coverage gap).")})))
+                 "coverage gap). Likewise the ZAF entry is honestly "
+                 "scoped to APAC-licensed agents dealing in the "
+                 "agricultural produce listed in the Agricultural "
+                 "Produce Agents Act's Schedule 1 (fresh produce and "
+                 "livestock/meat/hides), not a general South African "
+                 "commercial-agency statute covering every "
+                 "commission-based wholesale trade (another honestly-"
+                 "flagged coverage gap).")})))
 
 (defn required-evidence-satisfied?
   "Does `submitted` (a set/coll of evidence keywords or strings) satisfy
