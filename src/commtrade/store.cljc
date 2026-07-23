@@ -44,10 +44,9 @@
   operator trusting a commission-brokerage actor needs, and the
   evidence an operator needs if a confirmation or a commission invoice
   is later disputed."
-  (:require #?(:clj  [clojure.edn :as edn]
-               :cljs [cljs.reader :as edn])
-            [commtrade.registry :as registry]
-            [langchain.db :as d]))
+  (:require [commtrade.registry :as registry]
+            [langchain.db :as d]
+            [langchain-store.core :as ls]))
 
 (defprotocol Store
   (brokerage-deal [s id])
@@ -216,9 +215,6 @@
    :confirmation-sequence/jurisdiction   {:db/unique :db.unique/identity}
    :invoice-sequence/jurisdiction        {:db/unique :db.unique/identity}})
 
-(defn- enc [v] (pr-str v))
-(defn- dec* [s] (when s (edn/read-string s)))
-
 ;; Every brokerage-deal field is stored as its own Datomic attr so a
 ;; governor pull reads the exact ground truth (no blob decode). Boolean
 ;; fields are coerced on read so a missing attr reads back as false
@@ -276,21 +272,21 @@
          (map #(pull->deal (d/pull (d/db conn) deal-pull [:brokerage-deal/id %])))
          (sort-by :id)))
   (assessment-of [_ deal-id]
-    (dec* (d/q '[:find ?p . :in $ ?did
+    (ls/dec* (d/q '[:find ?p . :in $ ?did
                 :where [?a :assessment/deal-id ?did] [?a :assessment/payload ?p]]
               (d/db conn) deal-id)))
   (ledger [_]
     (->> (d/q '[:find ?s ?f :where [?e :ledger/seq ?s] [?e :ledger/fact ?f]] (d/db conn))
          (sort-by first)
-         (mapv (comp dec* second))))
+         (mapv (comp ls/dec* second))))
   (confirmation-history [_]
     (->> (d/q '[:find ?s ?r :where [?e :confirmation/seq ?s] [?e :confirmation/record ?r]] (d/db conn))
          (sort-by first)
-         (mapv (comp dec* second))))
+         (mapv (comp ls/dec* second))))
   (invoice-history [_]
     (->> (d/q '[:find ?s ?r :where [?e :invoice/seq ?s] [?e :invoice/record ?r]] (d/db conn))
          (sort-by first)
-         (mapv (comp dec* second))))
+         (mapv (comp ls/dec* second))))
   (next-confirmation-sequence [_ jurisdiction]
     (or (d/q '[:find ?n . :in $ ?j
               :where [?e :confirmation-sequence/jurisdiction ?j] [?e :confirmation-sequence/next ?n]]
@@ -311,7 +307,7 @@
       (d/transact! conn [(deal->tx value)])
 
       :mandate-assessment/set
-      (d/transact! conn [{:assessment/deal-id (first path) :assessment/payload (enc payload)}])
+      (d/transact! conn [{:assessment/deal-id (first path) :assessment/payload (ls/enc payload)}])
 
       :deal/mark-confirmed
       (let [deal-id (first path)
@@ -321,7 +317,7 @@
         (d/transact! conn
                      [(deal->tx (assoc deal-patch :id deal-id))
                       {:confirmation-sequence/jurisdiction jurisdiction :confirmation-sequence/next next-n}
-                      {:confirmation/seq (count (confirmation-history s)) :confirmation/record (enc (get result "record"))}])
+                      {:confirmation/seq (count (confirmation-history s)) :confirmation/record (ls/enc (get result "record"))}])
         result)
 
       :deal/mark-invoiced
@@ -332,12 +328,12 @@
         (d/transact! conn
                      [(deal->tx (assoc deal-patch :id deal-id))
                       {:invoice-sequence/jurisdiction jurisdiction :invoice-sequence/next next-n}
-                      {:invoice/seq (count (invoice-history s)) :invoice/record (enc (get result "record"))}])
+                      {:invoice/seq (count (invoice-history s)) :invoice/record (ls/enc (get result "record"))}])
         result)
       nil)
     s)
   (append-ledger! [s fact]
-    (d/transact! conn [{:ledger/seq (count (ledger s)) :ledger/fact (enc fact)}])
+    (d/transact! conn [{:ledger/seq (count (ledger s)) :ledger/fact (ls/enc fact)}])
     fact)
   (with-brokerage-deals [s deals]
     (when (seq deals) (d/transact! conn (mapv deal->tx (vals deals)))) s))
