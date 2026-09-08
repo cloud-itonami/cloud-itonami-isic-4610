@@ -33,7 +33,7 @@
   they settle the underlying trade directly between themselves; it is
   only the broker's own record that a matched deal has been arranged
   and confirmed."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (defn- unsigned-certificate
   "Every certificate this actor produces is UNSIGNED -- signature is
@@ -70,7 +70,7 @@
     (throw (ex-info "deal-confirmation: jurisdiction required" {})))
   (when (< sequence 0)
     (throw (ex-info "deal-confirmation: sequence must be >= 0" {})))
-  (let [confirmation-number (str (str/upper-case jurisdiction) "-CONFIRM-" (zero-pad sequence 6))
+  (let [confirmation-number (str (str/upper jurisdiction) "-CONFIRM-" (zero-pad sequence 6))
         record {"record_id" confirmation-number
                 "kind" "deal-confirmation-draft"
                 "deal_id" deal-id
@@ -96,7 +96,7 @@
     (throw (ex-info "commission-invoice: jurisdiction required" {})))
   (when (< sequence 0)
     (throw (ex-info "commission-invoice: sequence must be >= 0" {})))
-  (let [invoice-number (str (str/upper-case jurisdiction) "-COMMISSION-" (zero-pad sequence 6))
+  (let [invoice-number (str (str/upper jurisdiction) "-COMMISSION-" (zero-pad sequence 6))
         record {"record_id" invoice-number
                 "kind" "commission-invoice-draft"
                 "deal_id" deal-id
