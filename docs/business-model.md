@@ -75,7 +75,7 @@ traceable to the domain (Wholesale on a Fee or Contract Basis, ISIC
 (`:fiduciary-duty`, `:trade-compliance`, `:transparency`).
 
 This is the rule the companion contract test
-(`test/commtrade/governor_contract_test.clj`) encodes end-to-end: the
+(`test/commtrade/governor_contract_test.cljk`) encodes end-to-end: the
 CommTradeAdvisor never confirms a deal between two principals or
 settles a commission invoice the Commission Broker Governor would
 reject, `:deal/confirm` and `:commission/invoice` NEVER auto-commit at

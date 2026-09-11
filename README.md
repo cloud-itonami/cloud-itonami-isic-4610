@@ -102,7 +102,7 @@ construction.** Two independent layers enforce this
 (`commtrade.governor`'s `:deal/confirm`/`:commission/invoice`
 high-stakes gate and `commtrade.phase`'s phase table, which never puts
 either op in any phase's `:auto` set) -- see `commtrade.phase`'s
-docstring and `test/commtrade/phase_test.clj`'s
+docstring and `test/commtrade/phase_test.cljk`'s
 `deal-confirm-never-auto-at-any-phase`/
 `commission-invoice-never-auto-at-any-phase`. The actor may draft,
 check and recommend; a human trading supervisor is always the one who
@@ -213,14 +213,14 @@ dmn/bpmn/audit-ledger stack -- with NO `:robotics` in the stack at all
 
 | File | Role |
 |---|---|
-| `src/commtrade/store.cljc` | **Store** protocol -- `MemStore` ‖ `DatomicStore` (`langchain.db`) + append-only audit ledger + confirmation AND invoice history (dual history). The double-actuation guard checks dedicated `:confirmed?`/`:invoiced?` booleans rather than a `:status` value |
-| `src/commtrade/registry.cljc` | Deal-confirmation/commission-invoice draft records (record construction only -- the Commission Broker Governor's checks are direct entity booleans, so there are no pure range-check functions to host here) |
-| `src/commtrade/facts.cljc` | Per-jurisdiction commercial-agency / dual-agency / sanctions catalog with an official spec-basis citation per entry, honest coverage reporting |
-| `src/commtrade/commtradeadvisor.cljc` | **CommTradeAdvisor** -- `mock-advisor` ‖ `llm-advisor`; intake/mandate-verification/confirm/invoice proposals |
-| `src/commtrade/governor.cljc` | **Commission Broker Governor** -- 6 HARD checks (spec-basis · evidence-incomplete · mandate-missing · principal-identity-unverified · conflict-of-interest-undisclosed · counterparty-sanctions-flag-unresolved) + 2 double-actuation guards + 1 soft (confidence/actuation gate) |
-| `src/commtrade/phase.cljc` | **Phase 0→3** -- read-only → assisted intake → assisted verify → supervised (confirm/invoice always human; mandate intake is the ONLY auto-eligible op, no direct fiduciary/sanctions risk) |
-| `src/commtrade/operation.cljc` | **OperationActor** -- langgraph StateGraph |
-| `src/commtrade/sim.cljc` | demo driver |
+| `src/commtrade/store.cljk` | **Store** protocol -- `MemStore` ‖ `DatomicStore` (`langchain.db`) + append-only audit ledger + confirmation AND invoice history (dual history). The double-actuation guard checks dedicated `:confirmed?`/`:invoiced?` booleans rather than a `:status` value |
+| `src/commtrade/registry.cljk` | Deal-confirmation/commission-invoice draft records (record construction only -- the Commission Broker Governor's checks are direct entity booleans, so there are no pure range-check functions to host here) |
+| `src/commtrade/facts.cljk` | Per-jurisdiction commercial-agency / dual-agency / sanctions catalog with an official spec-basis citation per entry, honest coverage reporting |
+| `src/commtrade/commtradeadvisor.cljk` | **CommTradeAdvisor** -- `mock-advisor` ‖ `llm-advisor`; intake/mandate-verification/confirm/invoice proposals |
+| `src/commtrade/governor.cljk` | **Commission Broker Governor** -- 6 HARD checks (spec-basis · evidence-incomplete · mandate-missing · principal-identity-unverified · conflict-of-interest-undisclosed · counterparty-sanctions-flag-unresolved) + 2 double-actuation guards + 1 soft (confidence/actuation gate) |
+| `src/commtrade/phase.cljk` | **Phase 0→3** -- read-only → assisted intake → assisted verify → supervised (confirm/invoice always human; mandate intake is the ONLY auto-eligible op, no direct fiduciary/sanctions risk) |
+| `src/commtrade/operation.cljk` | **OperationActor** -- langgraph StateGraph |
+| `src/commtrade/sim.cljk` | demo driver |
 | `test/commtrade/*_test.clj` | governor contract · phase invariants · store parity · registry conformance · facts coverage |
 
 ## Business-process coverage (honest)
