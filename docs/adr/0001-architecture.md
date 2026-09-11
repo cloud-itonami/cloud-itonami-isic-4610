@@ -190,7 +190,7 @@ discipline every prior governor's guards establish, informed by
 `commtrade.store/Store` is implemented by both `MemStore` (atom-backed,
 default for dev/tests/demo) and `DatomicStore` (`langchain.db`-backed),
 proven to satisfy the same contract in
-`test/commtrade/store_contract_test.clj`. The `DatomicStore` also
+`test/commtrade/store_contract_test.cljk`. The `DatomicStore` also
 round-trips the `:mandate-side`/`:status` KEYWORD fields (`:buyer-
 side`/`:seller-side`/`:dual`, `:intake`) via a `str`/`keyword` codec,
 since `langchain.db` transacts scalar attribute values and a keyword
@@ -328,7 +328,7 @@ Robotics Premise section for the full reasoning.
   sibling's `robotics true` -- an honest, precedent-grounded departure,
   not an oversight.
 - `MemStore` || `DatomicStore` parity is proven by
-  `test/commtrade/store_contract_test.clj`, including the keyword-field
+  `test/commtrade/store_contract_test.cljk`, including the keyword-field
   codec `:mandate-side`/`:status` needed for Datomic round-tripping.
 - Lint is clean; the demo (`clojure -M:dev:run`) walks one clean
   confirmation + commission-invoice lifecycle, plus six HARD-hold
