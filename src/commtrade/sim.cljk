@@ -1,5 +1,5 @@
 (ns commtrade.sim
-  "Demo driver -- `clojure -M:dev:run`. Walks a clean brokerage-deal
+  "Demo driver -- `kbb -M:dev:run`. Walks a clean brokerage-deal
   through intake -> mandate verification -> deal confirmation
   (escalate/approve/commit) -> commission-invoice settlement
   (escalate/approve/commit), then shows HARD-hold scenarios: a

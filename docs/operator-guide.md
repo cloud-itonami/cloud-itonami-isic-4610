@@ -108,7 +108,7 @@ an undisclosed dual-agency conflict of interest, a sanctions screening
 suppressed to force a confirmation through, or a commission invoice
 posted without a human sign-off.
 
-## Feel the Decision Gate: `clojure -M:dev:run`
+## Feel the Decision Gate: `kbb -M:dev:run`
 
 This vertical has no companion playable prototype. The fastest hands-on
 way to feel why the `:commission-broker-governor` gate exists is the

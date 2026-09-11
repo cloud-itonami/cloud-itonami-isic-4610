@@ -2471,7 +2471,7 @@ img,svg { max-width: 100%; height: auto; }</style></head><body>
     <p>Everything below was produced by <strong>actually running this repo's actor</strong> at build time —
       <code>commtrade.operation</code> (langgraph StateGraph) → <code>commtrade.governor</code>
       → <code>commtrade.phase</code> → <code>commtrade.store</code> — over the seeded brokerage-deals in
-      <code>commtrade.store/demo-data</code>. Regenerate with <code>clojure -M:dev:render-html</code>.
+      <code>commtrade.store/demo-data</code>. Regenerate with <code>kbb -M:dev:render-html</code>.
       No value on this page is hand-written domain data, and the page is byte-identical across reruns.</p>
     <p class="muted">A commission broker never takes title to the goods: <code>:deal/confirm</code> is the
       broker's own record that a matched deal has been arranged (the two principals settle the underlying

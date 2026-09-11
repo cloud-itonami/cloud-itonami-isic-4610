@@ -13,7 +13,7 @@
   domain data.
 
   The scenario is adapted from this repo's own `commtrade.sim` demo
-  driver (`clojure -M:dev:run`), which was run and read BEFORE writing
+  driver (`kbb -M:dev:run`), which was run and read BEFORE writing
   this file to confirm its subject ids really exist in the store's seed
   (they do), and extended with one case the sim does not cover: a
   `:deal/confirm` on a brokerage-deal whose `:mandate/verify` was
@@ -38,7 +38,7 @@
   consecutive runs against the same seed are byte-identical (verify by
   diffing them).
 
-  Usage: `clojure -M:dev:render-html [out-file]`
+  Usage: `kbb -M:dev:render-html [out-file]`
   (default `docs/samples/operator-console.html`)."
   (:require [jp-go-dds.skin]
             [kotoba.lang.text :as str]
@@ -342,7 +342,7 @@
      "    <p>Everything below was produced by <strong>actually running this repo's actor</strong> at build time —\n"
      "      <code>commtrade.operation</code> (langgraph StateGraph) → <code>commtrade.governor</code>\n"
      "      → <code>commtrade.phase</code> → <code>commtrade.store</code> — over the seeded brokerage-deals in\n"
-     "      <code>commtrade.store/demo-data</code>. Regenerate with <code>clojure -M:dev:render-html</code>.\n"
+     "      <code>commtrade.store/demo-data</code>. Regenerate with <code>kbb -M:dev:render-html</code>.\n"
      "      No value on this page is hand-written domain data, and the page is byte-identical across reruns.</p>\n"
      "    <p class=\"muted\">A commission broker never takes title to the goods: <code>:deal/confirm</code> is the\n"
      "      broker's own record that a matched deal has been arranged (the two principals settle the underlying\n"

@@ -330,12 +330,12 @@ Robotics Premise section for the full reasoning.
 - `MemStore` || `DatomicStore` parity is proven by
   `test/commtrade/store_contract_test.cljk`, including the keyword-field
   codec `:mandate-side`/`:status` needed for Datomic round-tripping.
-- Lint is clean; the demo (`clojure -M:dev:run`) walks one clean
+- Lint is clean; the demo (`kbb -M:dev:run`) walks one clean
   confirmation + commission-invoice lifecycle, plus six HARD-hold
   scenarios (no spec-basis, mandate-missing, principal-identity-
   unverified, sanctions, conflict-of-interest-undisclosed, double
   confirmation, double invoice), end-to-end. See the repository's own
-  `clojure -M:dev:test` output for current pass counts.
+  `kbb -M:dev:test` output for current pass counts.
 
 ## References
 
