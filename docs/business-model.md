@@ -333,7 +333,7 @@ fabricate a jurisdiction's requirements to make coverage look bigger.
 ## Maturity
 
 `:implemented` -- `CommTradeAdvisor` + `Commission Broker Governor` run
-as real, tested code (`clojure -M:dev:test`: see repository test
+as real, tested code (`kbb -M:dev:test`: see repository test
 output for current counts; lint clean), following the SAME
 governed-actor architecture as the other prior actors across this
 fleet, with its own distinct, independently-named governor and its own
