@@ -2,7 +2,7 @@
   "The phase table as executable tests. The invariant this repo cannot
   regress on: `:deal/confirm`/`:commission/invoice` must NEVER be a
   member of any phase's `:auto` set."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [commtrade.phase :as phase]))
 
 (deftest deal-confirm-never-auto-at-any-phase

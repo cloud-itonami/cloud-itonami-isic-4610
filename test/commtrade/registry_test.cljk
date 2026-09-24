@@ -1,5 +1,5 @@
 (ns commtrade.registry-test
-  (:require [clojure.test :refer [deftest is]]
+  (:require [kotoba.test :refer [deftest is]]
             [commtrade.registry :as r]))
 
 ;; The commission-brokerage domain checks (mandate-on-file, principal-
